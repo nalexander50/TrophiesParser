@@ -8,7 +8,7 @@
             "name": "Python: Main (no args)",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceRoot}/main.py",
+            "program": "${workspaceRoot}/src/main.py",
             "console": "integratedTerminal",
             "internalConsoleOptions": "openOnSessionStart"
         },
@@ -16,7 +16,7 @@
             "name": "Python: Main (input arg)",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceRoot}/main.py",
+            "program": "${workspaceRoot}/src/main.py",
             "args": [
                 "${workspaceRoot}/input.txt"
             ],
@@ -27,7 +27,7 @@
             "name": "Python: Main (input + output args)",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceRoot}/main.py",
+            "program": "${workspaceRoot}/src/main.py",
             "args": [
                 "${workspaceRoot}/input.txt",
                 "${workspaceRoot}/output.csv"
