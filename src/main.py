@@ -21,7 +21,7 @@ def parse_args():
 
 
 def line_is_date(line):
-    date_pattern = r'\d{1,2}(th|st|nd)\s*.{3}\s*20\d{2}'    
+    date_pattern = r'\d{1,2}(th|st|nd|rd)\s*.{3}\s*20\d{2}'    
     return re.search(date_pattern, line) is not None
 
 
