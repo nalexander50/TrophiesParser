@@ -12,7 +12,7 @@ class TrophyMetal(Enum):
     PLATINUM = 3
 
     @staticmethod
-    def from_str(str_value: str) -> TrophyMetal | None:
+    def from_str(str_value: str) -> TrophyMetal:
         options = {
             'Bronze': TrophyMetal.BRONZE,
             'Silver': TrophyMetal.SILVER,
@@ -25,7 +25,7 @@ class TrophyMetal(Enum):
         if str_value in options:
             return options[str_value]
         else:
-            return None
+            raise ValueError(f'Invalid Metal ({str_value})')
 
     def __str__(self) -> str:
         if self is TrophyMetal.BRONZE:
