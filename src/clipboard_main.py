@@ -34,7 +34,7 @@ def clipboard_main():
         sys.exit('Error: Expected multiple lines of clipboard input')
 
     trophy_list = trophies_processor.process(input_lines)
-    ouput = '\n'.join([trophy_formatter.csv(trophy) for trophy in trophy_list])
+    ouput = ''.join([trophy_formatter.csv(trophy, newline=True) for trophy in trophy_list])
 
     print(ouput)
     pyperclip.copy(ouput)

@@ -21,7 +21,7 @@ def parse_args() -> Tuple[str, str]:
 def main(input_path: str, output_path: str):
     with open(input_path, 'r', encoding='utf8') as input_file:
         trophy_list = trophies_processor.process(input_file.readlines())
-        ouput = [trophy_formatter.csv(trophy) for trophy in trophy_list]
+        ouput = [trophy_formatter.csv(trophy, newline=True) for trophy in trophy_list]
 
         with open(output_path, 'w', encoding='utf8') as output_file:
             output_file.writelines(ouput)

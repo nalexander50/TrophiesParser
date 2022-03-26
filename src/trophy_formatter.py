@@ -5,7 +5,7 @@ Trophy = dict[TrophyMetadataCategory, str | TrophyMetal]
 TrophyList = list[Trophy]
 
 
-def delimited(delimiter: str, trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', newline: bool = True) -> str:
+def delimited(delimiter: str, trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', newline: bool = False) -> str:
     unlocked = TrophyMetadataCategory.UNLOCK_DATE in trophy and TrophyMetadataCategory.UNLOCK_TIME in trophy
     name = str(trophy[TrophyMetadataCategory.NAME])
     criteria = str(trophy[TrophyMetadataCategory.CRITERIA])
@@ -27,7 +27,7 @@ def delimited(delimiter: str, trophy: Trophy, spaces: bool = False, delimiter_re
     return output
 
 
-def csv(trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', newline: bool = True) -> str:
+def csv(trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', newline: bool = False) -> str:
     return delimited(',',
                      trophy,
                      spaces=spaces,
@@ -35,7 +35,7 @@ def csv(trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', new
                      newline=newline)
 
 
-def piped(trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', newline: bool = True):
+def piped(trophy: Trophy, spaces: bool = False, delimiter_replacer: str = ' ', newline: bool = False):
     return delimited('|',
                      trophy,
                      spaces=spaces,
