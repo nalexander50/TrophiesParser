@@ -34,6 +34,14 @@
             ],
             "console": "internalConsole",
             "internalConsoleOptions": "openOnSessionStart"
-        }
+        },
+        {
+            "name": "Python: Clipboard",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/clipboard.py",
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
     ]
 }

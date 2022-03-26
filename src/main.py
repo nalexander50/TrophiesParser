@@ -21,7 +21,7 @@ def parse_args():
 
 
 def line_is_date(line):
-    date_pattern = r'\d{1,2}(th|st|nd|rd)\s*.{3}\s*20\d{2}'    
+    date_pattern = r'\d{1,2}(th|st|nd|rd)\s*.{3}\s*20\d{2}'
     return re.search(date_pattern, line) is not None
 
 
@@ -30,12 +30,17 @@ def line_is_time(line):
     return re.search(time_pattern, line) is not None
 
 
+def line_is_progress(line):
+    prgoress_pattern = r'\d+\/\d+'
+    return re.search(prgoress_pattern, line) is not None
+
+
 def write_header_line(output_file):
     output_file.write('unlocked,missable,name,criteria,metal')
 
 
 def write_data_line(data, output_file):
-    unlocked = ETrophyMetadataCategory.UNLOCK_DATE in data  and ETrophyMetadataCategory.UNLOCK_TIME in data
+    unlocked = ETrophyMetadataCategory.UNLOCK_DATE in data and ETrophyMetadataCategory.UNLOCK_TIME in data
     name = data[ETrophyMetadataCategory.NAME]
     criteria = data[ETrophyMetadataCategory.CRITERIA]
     metal = str(data[ETrophyMetadataCategory.METAL])
@@ -58,8 +63,12 @@ def main(input_file, output_file):
         if category == ETrophyMetadataCategory.UNLOCK_DATE and not line_is_date(line):
             current_data_index += 1
             category = ETrophyMetadataCategory(current_data_index)
-        
+
         if category == ETrophyMetadataCategory.UNLOCK_TIME and not line_is_time(line):
+            current_data_index += 1
+            category = ETrophyMetadataCategory(current_data_index)
+
+        if category == ETrophyMetadataCategory.PROGRESS and not line_is_progress(line):
             current_data_index += 1
             category = ETrophyMetadataCategory(current_data_index)
 
@@ -71,11 +80,10 @@ def main(input_file, output_file):
         else:
             current_data[category] = line.strip().replace(',', '')
             current_data_index += 1
-    
+
     ordered_data = sorted(all_data, reverse=True, key=lambda data: data[ETrophyMetadataCategory.METAL])
     for data in ordered_data:
         write_data_line(data, output_file)
-
 
 
 if __name__ == '__main__':

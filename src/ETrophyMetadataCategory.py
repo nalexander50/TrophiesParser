@@ -7,9 +7,10 @@ class ETrophyMetadataCategory(IntEnum):
     CRITERIA = 1
     UNLOCK_DATE = 2
     UNLOCK_TIME = 3
-    RARITY_PERCENT = 4
-    RARITY_FLAVOR = 5
-    METAL = 6
+    PROGRESS = 4
+    RARITY_PERCENT = 5
+    RARITY_FLAVOR = 6
+    METAL = 7
 
 
 def allMetdataCategories():
