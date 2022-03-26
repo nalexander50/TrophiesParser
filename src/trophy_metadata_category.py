@@ -2,7 +2,7 @@ from enum import IntEnum, unique
 
 
 @unique
-class ETrophyMetadataCategory(IntEnum):
+class TrophyMetadataCategory(IntEnum):
     NAME = 0
     CRITERIA = 1
     UNLOCK_DATE = 2
@@ -13,5 +13,5 @@ class ETrophyMetadataCategory(IntEnum):
     METAL = 7
 
 
-def allMetdataCategories():
-    return [category.name for category in ETrophyMetadataCategory]
+def all_metdata_categories():
+    return [category.name for category in TrophyMetadataCategory]
